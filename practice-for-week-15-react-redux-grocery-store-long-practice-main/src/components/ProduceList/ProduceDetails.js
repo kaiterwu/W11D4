@@ -1,3 +1,7 @@
+import { populateCart } from "../../store/cart";
+import { store } from "../..";
+
+
 function ProduceDetails({ produce }) {
   const cartItem = {};
 
@@ -10,7 +14,7 @@ function ProduceDetails({ produce }) {
         >
           <i className={"fas fa-heart"} />
         </button>
-        <button
+        <button onClick ={()=>store.dispatch(populateCart(produce.id))}
           className={"plus-button" + (cartItem ? " selected" : "")}
         >
           <i className="fas fa-plus" />

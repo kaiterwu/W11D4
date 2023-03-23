@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 function CartItem({ item }) {
   const [count, setCount] = useState(item.count);
