@@ -28,7 +28,7 @@ export default function cartReducer(state={},action){
             newState[action.produceId] = {id:action.produceId,count:1}
         }return newState
         case REMOVE_CART:
-            if (newState[action.produceId]){
+            if (newState[action.produceId] && newState[action.produceId].count >0){
                 newState[action.produceId].count--
             }
 

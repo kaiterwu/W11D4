@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { populateCart,removeCart } from '../../store/cart';
+
 
 function CartItem({ item }) {
   const [count, setCount] = useState(item.count);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setCount(item.count);
@@ -15,14 +18,18 @@ function CartItem({ item }) {
         <input
           type="number"
           value={count}
+          onChange={(e) => setCount(e.target.value)}
+          // onBlur = {()=>dispatch(populateCart(item.id))}
         />
         <button
           className="cart-item-button"
+          onClick = {()=>dispatch(populateCart(item.id))}
         >
           +
         </button>
         <button
           className="cart-item-button"
+          onClick = {()=>dispatch(removeCart(item.id))}
         >
           -
         </button>
